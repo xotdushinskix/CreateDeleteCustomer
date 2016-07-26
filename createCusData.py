@@ -1,5 +1,5 @@
-createCustomerURL = "http://dev:q1w2e3r4@vr2.bintime.com/users/createcustomer"
-customerGrid = "http://dev:q1w2e3r4@vr2.bintime.com/users/customerlist"
+createCustomerURL = "http:/.com/users/createcustomer"
+customerGrid = "http:/.com/users/customerlist"
 
 
 emailField = '//*[@id="UserLogin_username"]'
