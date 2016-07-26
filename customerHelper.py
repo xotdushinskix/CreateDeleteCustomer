@@ -11,6 +11,3 @@ class RandomHelper():
         return ''.join(random.choice(chars.capitalize()) for x in range(size))
 
 
-    def intForSmallValues(self):
-        someRange = range(1, 30)
-        return random.choice(someRange)

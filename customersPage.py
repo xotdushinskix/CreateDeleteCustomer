@@ -21,6 +21,7 @@ class CustomerPage():
     def getAllCustomers(self, driver):
         return helpFuncForCustPage.getAllItems(driver, createCusData.allCustomersNameOnGrid)
 
+
     def getAllEmails(self, driver):
         return helpFuncForCustPage.getAllItems(driver, createCusData.allCustomersEmailOnGrid)
 

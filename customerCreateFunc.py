@@ -43,8 +43,12 @@ class CustomerCreateFunc(HelpFunctionForCustomerCreate):
     def fillCustomerName(self, driver):
         driver.implicitly_wait(10)
         helpName = helpFunc.stringAction(driver, 6)
-        driver.find_element_by_xpath(createCusData.customerNameInput).send_keys(createCusData.customerName + helpName)
-        return createCusData.customerName + helpName
+        customerFullName = createCusData.customerName + helpName
+        driver.find_element_by_xpath(createCusData.customerNameInput).send_keys(customerFullName)
+        with open("cust_name.txt", "w") as myfile:
+            myfile.write(customerFullName)
+        myfile.close()
+        return customerFullName
 
 
 
@@ -133,9 +137,12 @@ class CustomerCreateFunc(HelpFunctionForCustomerCreate):
 
     def fillEmail(self, driver):
         helpEmail = helpFunc.stringAction(driver, 5)
-        driver.find_element_by_xpath(createCusData.contactEmailInput).send_keys("contact_email_" + helpEmail +
-                                                                                "@gmail.com")
-        return "contact_email_" + helpEmail +"@gmail.com"
+        customerEmail = "contact_email_" + helpEmail + "@gmail.com"
+        driver.find_element_by_xpath(createCusData.contactEmailInput).send_keys(customerEmail)
+        with open("cust_email.txt", "w") as myfile:
+            myfile.write(customerEmail)
+        myfile.close()
+        return customerEmail
 
 
 

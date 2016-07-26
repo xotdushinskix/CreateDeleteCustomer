@@ -2,12 +2,15 @@ import unittest
 import createCusData
 from selenium import webdriver
 
+
 from customerCreateFunc import CustomerCreateFunc
 from customersPage import CustomerPage
+from textFileWorker import FileWorker
 
 
 custCreateFunc = CustomerCreateFunc()
 custListPage = CustomerPage()
+fileWorker = FileWorker()
 
 class MyTestCase(unittest.TestCase):
 
@@ -23,12 +26,12 @@ class MyTestCase(unittest.TestCase):
 
 class TestCreateAndDeleteCustomer(MyTestCase):
 
-    def testCustomerCreateAndDelete(self):
+    def testCustomerCreate(self):
         driver = self.driver
 
         custCreateFunc.login(driver)
 
-        customerName = custCreateFunc.fillCustomerName(driver)
+        custCreateFunc.fillCustomerName(driver)
 
         custCreateFunc.selecShipAddress(driver)
 
@@ -42,22 +45,30 @@ class TestCreateAndDeleteCustomer(MyTestCase):
 
         custCreateFunc.fillContactPhone(driver)
 
-        customerEmail = custCreateFunc.fillEmail(driver)
+        custCreateFunc.fillEmail(driver)
 
         custCreateFunc.clickOnCreateButton(driver)
 
         succesNotifAfterCreateCustomer =  custCreateFunc.notificationAfterCreateCustomer(driver)
         self.assertEquals(succesNotifAfterCreateCustomer, "Customer was successfully saved.")
 
+
+
+
+    def testCustomerDelete(self):
+        driver = self.driver
+
         driver.get(createCusData.customerGrid)
 
+        custCreateFunc.login(driver)
+
         allCustomers = custListPage.getAllCustomers(driver)
-        self.assertIn(customerName, allCustomers)
+        self.assertIn(fileWorker.customerName(), allCustomers)
 
         allCustomersEmail = custListPage.getAllEmails(driver)
-        self.assertIn(customerEmail, allCustomersEmail)
+        self.assertIn(fileWorker.customerEmail(), allCustomersEmail)
 
-        custListPage.searchCreatedCustomer(driver, customerName)
+        custListPage.searchCreatedCustomer(driver, fileWorker.customerName())
 
         custListPage.deleteCreatedCustomer(driver)
 
@@ -67,11 +78,10 @@ class TestCreateAndDeleteCustomer(MyTestCase):
         driver.get(createCusData.customerGrid)
 
         allCustomers = custListPage.getAllCustomers(driver)
-        self.assertNotIn(customerName, allCustomers)
+        self.assertNotIn(fileWorker.customerName(), allCustomers)
 
         allCustomersEmail = custListPage.getAllEmails(driver)
-        self.assertNotIn(customerEmail, allCustomersEmail)
-
+        self.assertNotIn(fileWorker.customerEmail(), allCustomersEmail)
 
 
 

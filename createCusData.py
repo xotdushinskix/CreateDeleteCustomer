@@ -1,5 +1,5 @@
 createCustomerURL = "http://dev:q1w2e3r4@vr2.bintime.com/users/createcustomer"
-customerGrid = "http://vr2.bintime.com/users/customerlist"
+customerGrid = "http://dev:q1w2e3r4@vr2.bintime.com/users/customerlist"
 
 
 emailField = '//*[@id="UserLogin_username"]'
@@ -35,13 +35,14 @@ pricePerItemFF = ".//*[@id='Customer_price_per_item']"
 flatFeePPI = ".//*[@id='Customer_flat_fee']"
 
 
-
 contactInfoArrow = './/div[@class="enableContact glyphicon glyphicon-chevron-down"]'
 contactNameInput = ".//*[@id='Customer_contacts_contact_name']"
 contactPhoneInput = ".//*[@id='Customer_contacts_contact_phone']"
 contactEmailInput = ".//*[@id='Customer_contacts_contact_email']"
 
+
 createButton = '//button[@class="controlling_buttons save_form btn btn-success"]'
+
 
 notificationAfterCreateCustomer = './/div[@class="noty_message"]'
 
@@ -53,6 +54,7 @@ allCustomersEmailOnGrid = ".//*[@id='customer-grid']/table[2]//td[4]"
 searchButtonOnCustomerListPage = './/button[@class="search_button btn btn-gepard-wide btn-gepard-default btn-default"]'
 customerNameInputOnSearchGrid = ".//*[@id='Customer_customer_name']"
 searchButtonOnSearchGrid = ".//button[@id='search-button-customer-grid']"
+
 
 deleteButtonOnGrid = './/i[@class="fa fa-trash-o fa-lg"]'
 applyDelete = ".//*[@id='button-0']"
