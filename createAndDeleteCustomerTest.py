@@ -52,6 +52,13 @@ class TestCreateAndDeleteCustomer(MyTestCase):
         succesNotifAfterCreateCustomer =  custCreateFunc.notificationAfterCreateCustomer(driver)
         self.assertEquals(succesNotifAfterCreateCustomer, "Customer was successfully saved.")
 
+        driver.get(createCusData.customerGrid)
+
+        allCustomers = custListPage.getAllCustomers(driver)
+        self.assertIn(fileWorker.customerName(), allCustomers)
+
+        allCustomersEmail = custListPage.getAllEmails(driver)
+        self.assertIn(fileWorker.customerEmail(), allCustomersEmail)
 
 
 
@@ -61,12 +68,6 @@ class TestCreateAndDeleteCustomer(MyTestCase):
         driver.get(createCusData.customerGrid)
 
         custCreateFunc.login(driver)
-
-        allCustomers = custListPage.getAllCustomers(driver)
-        self.assertIn(fileWorker.customerName(), allCustomers)
-
-        allCustomersEmail = custListPage.getAllEmails(driver)
-        self.assertIn(fileWorker.customerEmail(), allCustomersEmail)
 
         custListPage.searchCreatedCustomer(driver, fileWorker.customerName())
 
